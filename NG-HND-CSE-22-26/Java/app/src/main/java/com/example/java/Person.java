@@ -1,10 +1,10 @@
 package com.example.java;
 
-public class person {
+public class Person {
     private String firstname;
     private String lastname;
 
-    public person() {
+    public Person() {
         //Default Constructor
 
         this.firstname = "";
@@ -12,7 +12,7 @@ public class person {
 
     }
 
-    public person(String firstname, String lastname) {
+    public Person(String firstname, String lastname) {
         //Overloading Constructor Constructor
 
         this.firstname = "";
