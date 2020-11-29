@@ -8,6 +8,23 @@ package newpackageicbt;
  *
  * @author user
  */
-public class Employee {
+public class Employee extends Person {
+     private String empno;
+
+    public Employee() {
+    }
+
+    public Employee(String empno, String firstname, String lastname) {
+        super(firstname, lastname);
+        this.empno = empno;
+    }
+
+    public String getEmpno() {
+        return empno;
+    }
+
+    public void setEmpno(String empno) {
+        this.empno = empno;
+    }
     
 }
