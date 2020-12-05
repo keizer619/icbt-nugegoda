@@ -15,8 +15,10 @@ public class Employee extends Person {
     public Employee(){
         this.epfNo = "";
     }
-
+    
+    //This calling overloaded constructors
     public Employee(String epfNo, String firstName, String lastName) {
+        //This calling person overloaded constructors
         super(firstName, lastName);
         this.epfNo = epfNo;
     }

@@ -11,9 +11,16 @@ package newpackage;
  */
 public class App {
     public static void main(String[] args){
-        //Student st = new Student("ST01", "John", "Smith");
         
-        Student st = new Student();
-        System.out.println(st.getLastName().trim());
+        Person [] person = new Person[4];
+        
+        person[0] = new Student("ST01", "John", "Smith");
+        person[1] = new Student("ST01", "George", "Stuarts");
+        person[2] = new Employee("1", "James", "Wasly");
+        person[3] = new Employee("1", "Andrew", "Wallace");
+        
+        for(int i=0; i<person.length; i++){
+            System.err.println(person[i].getFirstName());
+        }
     }
 }
