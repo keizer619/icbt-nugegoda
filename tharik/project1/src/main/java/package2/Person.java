@@ -32,7 +32,6 @@ public class Person {
     }
     
     public String getFirstName() {
-        
         return this.firstName;
     }
     
