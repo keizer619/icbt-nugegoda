@@ -22,5 +22,8 @@ public class App {
         for(int i=0; i<person.length; i++){
             System.err.println(person[i].getFirstName());
         }
+        
+        Person p = new Employee();
+        Person p1 = new Student();
     }
 }
