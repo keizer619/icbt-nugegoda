@@ -13,6 +13,7 @@ public class Employee extends Person {
     private String epfNo;
 
     public Employee() {
+        epfNo = "";
     }
 
     public Employee(String epfNo, String firstName, String lastName) {

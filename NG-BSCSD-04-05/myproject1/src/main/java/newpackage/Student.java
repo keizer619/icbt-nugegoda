@@ -9,15 +9,12 @@ package newpackage;
  *
  * @author Buddhi
  */
-public class Student extends Person {
-//    
-    
-    
+public class Student extends Person{    
 private String id;
     
     public Student() {
         this.id = ""; 
-    }
+} 
 
     public Student(String id, String firstName, String lastName) {
         super(firstName, lastName);
@@ -30,6 +27,5 @@ private String id;
 
     public void setId(String id) {
         this.id = id;
-    }       
-    
+    }          
 }
