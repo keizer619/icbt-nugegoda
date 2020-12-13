@@ -18,7 +18,7 @@ public class App {
          
          System.out.println(no1 + "+" + no2 + "=" + cal.add(no1,no2));
          System.out.println(no1 + "+" + no2 + "=" + cal.subtract(no1,no2));
-         System.out.println(no1 + "+" + no2 + "=" + cal.devide(no1,no2));
+         System.out.println(no1 + "+" + no2 + "=" + cal.divide(no1,no2));
          System.out.println(no1 + "+" + no2 + "=" + cal.multiply(no1,no2));
     }
 }

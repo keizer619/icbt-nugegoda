@@ -18,7 +18,7 @@ public class Calculator {
         return no1 - no2;
     }
     
-    public int devide(int no1, int no2){
+    public int divide(int no1, int no2){
         return no1 / no2;
     }
     
