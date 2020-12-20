@@ -11,6 +11,7 @@ package org.icbt.my.web.app;
  */
 public class Utils {
     public static boolean authenticate(String username, String password) {
+        //TODO : These needs to be loaded from a DB
         return username.equals("admin") && password.equals("admin123");
     }
 }

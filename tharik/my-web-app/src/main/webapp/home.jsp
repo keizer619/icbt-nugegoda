@@ -4,6 +4,8 @@
     Author     : tharik
 --%>
 
+<%@page import="org.icbt.my.web.app.UserSession"%>
+<%@page import="java.util.UUID"%>
 <%@page import="org.icbt.my.web.app.Utils"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,17 +20,48 @@
             String password = "";
 
             if(request.getParameter("username") != null) {
-                username  = request.getParameter("username").toString();
+                username  = request.getParameter("username");
             }
 
             if(request.getParameter("password") != null) {
                 password  = request.getParameter("password").toString();
             }
             
+            //When username and password are provided as POST paramters
             if(Utils.authenticate(username, password)) {
+                
+                String sessionId = UUID.randomUUID().toString().toString().replace("-", "").toUpperCase();
+                
+                //Create and include it in response
+                Cookie cookie = new Cookie("sesid", sessionId);
+                response.addCookie(cookie);
+                
+                //Include username in session
+                UserSession userSession = new UserSession(username, "test login");
+                session.setAttribute(sessionId, userSession);
+ 
                 out.print("Welcome " + username);
             } else {
-                response.sendRedirect("login.jsp");
+                //When username and password are not provided as POST paramters
+                String userText = null;
+                      
+                //Check each cookie from request
+                for (Cookie cookie : request.getCookies()) {
+                    //Check sesid cookie
+                    if (cookie.getName().equals("sesid")) {
+                        String sessionId = cookie.getValue();
+                        
+                        //Load the username from session
+                        UserSession userSession = (UserSession)session.getAttribute(sessionId);
+                        userText = userSession.getUsername();
+                    }
+                }
+                
+                if (userText == null) {
+                    response.sendRedirect("login.jsp");
+                } else {
+                    out.print("Welcome " + userText);
+                } 
             }
 
 
