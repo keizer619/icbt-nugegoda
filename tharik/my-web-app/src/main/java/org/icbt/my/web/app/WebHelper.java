@@ -13,15 +13,13 @@ public class WebHelper {
     
     
     public static Student[] getStudents() {
-        
         Student[] students  = new Student[3];
         
         students[0] = new Student("ST001", "John", "123V");
         students[1] = new Student("ST002", "George", "124V");
         students[2] = new Student("ST003", "James", "1235");
         
-        return students;
-        
+        return students;   
     }
     
     public static String getGreeting() {
