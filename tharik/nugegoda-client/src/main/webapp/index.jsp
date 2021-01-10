@@ -4,6 +4,7 @@
     Author     : tharik
 --%>
 
+<%@page import="my.Student"%>
 <%@page import="my.MyService"%>
 <%@page import="my.MyService_Service"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,9 +20,15 @@
                 MyService_Service service = new MyService_Service();
                 MyService proxy = service.getMyServicePort();
                 
-                String output = proxy.hello("John");
+                Student student = proxy.getStudent();
                 
-                out.print(output);
+              
+                out.print("<p> Name : " + student.getId()+ "</p>");
+                out.print("<p> Name : " + student.getName() + "</p>");
+                out.print("<p> Name : " + student.getNic()+ "</p>");
+                
+                proxy.addStudent(student);
+
             
             %>
         </h2>

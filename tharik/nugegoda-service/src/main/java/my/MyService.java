@@ -23,4 +23,15 @@ public class MyService {
     public String hello(@WebParam(name = "name") String txt) {
         return "Hi " + txt + " !!";
     }
+    
+    @WebMethod(operationName = "getStudent")
+    public Student getStudent() {    
+        Student st = new Student("02", "George", "456");
+        return st;
+    }
+    
+    @WebMethod(operationName = "addStudent")
+    public boolean addStudent(@WebParam(name = "student") Student student) {    
+        return true;
+    }
 }
