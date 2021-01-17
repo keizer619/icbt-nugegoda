@@ -42,7 +42,7 @@ public class DBUtil {
          String username = rs.getString("username");
          String password = rs.getString("password");
          String firstName = rs.getString("first_name");
-         String lastName = rs.getString("lastName");
+         String lastName = rs.getString("last_name");
 
          User user = new User(username, password, firstName, lastName);
          users.add(user);
