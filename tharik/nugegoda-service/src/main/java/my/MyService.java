@@ -61,13 +61,14 @@ public class MyService {
     
     @WebMethod(operationName = "authenticate")
     public User authenticate(@WebParam(name = "username") String username,@WebParam(name = "password") String password) {
-        User user = new User("admin", "admin222", "George", "Smith");
-        
-        if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-            return user;
-        } else {
-            return null;
+        User user = null;
+        List<User> users  = DBUtil.getUsers();
+        for (User currentUser : users) {
+            if (username.equals(currentUser.getUsername()) && password.equals(currentUser.getPassword())) {
+                user = currentUser;
+                break;
+            }
         }
-        
+        return user;
     }
 }
