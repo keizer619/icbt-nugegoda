@@ -20,8 +20,7 @@
                 MyService_Service service = new MyService_Service();
                 MyService proxy = service.getMyServicePort();
                 
-                Student student = proxy.getStudent();
-                
+                Student student = proxy.getStudent("01");
               
                 out.print("<p> Name : " + student.getId()+ "</p>");
                 out.print("<p> Name : " + student.getName() + "</p>");
