@@ -58,4 +58,45 @@ public class DBUtilTest {
         assertEquals(user.getUsername(), result.get(0).getUsername());
     }
     
+    
+    @Test
+    public void testGetUser() {
+        System.out.println("getUser");
+        User user = new User();
+        user.setFirstName("John");
+        user.setLastName("Smith");
+        user.setPassword("pas123");
+        user.setUsername("admin");
+         
+        User result = DBUtil.getUser(user.getUsername());
+       
+        assertEquals(user.getFirstName(), result.getFirstName());
+        assertEquals(user.getLastName(), result.getLastName());
+        assertEquals(user.getPassword(), result.getPassword());
+        assertEquals(user.getUsername(), result.getUsername());
+    }
+    
+    
+    @Test
+    public void testAddUser() {
+        System.out.println("addUser");
+        User user = new User();
+        user.setFirstName("John");
+        user.setLastName("Smith");
+        user.setPassword("pas123");
+        user.setUsername("admin");
+        
+        boolean res = DBUtil.addUser(user);
+        assertEquals(true, res);
+            
+        User result = DBUtil.getUser(user.getUsername());
+       
+        assertEquals(user.getFirstName(), result.getFirstName());
+        assertEquals(user.getLastName(), result.getLastName());
+        assertEquals(user.getPassword(), result.getPassword());
+        assertEquals(user.getUsername(), result.getUsername());
+        
+        boolean res2 =  DBUtil.deleteUser(user.getUsername());
+    }
+    
 }
