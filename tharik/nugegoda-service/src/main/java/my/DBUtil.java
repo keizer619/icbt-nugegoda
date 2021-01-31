@@ -80,7 +80,7 @@ public class DBUtil {
            conn = DriverManager.getConnection(DB_URL, USER, PASS);
            stmt = conn.createStatement();
 
-           String sql = "SELECT * FROM users";
+           String sql = "SELECT * FROM users WHERE username='" + username + "'";
            ResultSet rs = stmt.executeQuery(sql);
            //STEP 5: Extract data from result set
            while(rs.next()){
@@ -114,18 +114,117 @@ public class DBUtil {
         return user;
    }
    
-   public static boolean addUser(User user) {
-       //TODO: Implement later
-       return false;
-   }
+public static boolean addUser(User user) {
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+
+           conn = DriverManager.getConnection(DB_URL, USER, PASS);
+           stmt = conn.createStatement();
+
+           String sql = "INSERT INTO `users` "
+                   + "(`username`, `first_name`, `last_name`, `password`) "
+                   + "VALUES ('" + user.getUsername() +  "',"
+                   + " '" + user.getFirstName() + "', "
+                   + "'" + user.getLastName() + "', "
+                   + "'" + user.getPassword() + "');";
+           stmt.executeUpdate(sql);
+           return true;
+        }catch(SQLException se){
+
+           se.printStackTrace();
+        }catch(Exception e){
+           //Handle errors for Class.forName
+           e.printStackTrace();
+        }finally{
+           try{
+              if(stmt!=null)
+                 conn.close();
+           }catch(SQLException se){
+           }// do nothing
+           try{
+              if(conn!=null)
+                 conn.close();
+           }catch(SQLException se){
+              se.printStackTrace();
+           }//end finally try
+        }//end try
+        
+        return false;
+    }
    
    public static boolean updateUser(User user) {
-       //TODO: Implement later
-       return false;
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+
+           conn = DriverManager.getConnection(DB_URL, USER, PASS);
+           stmt = conn.createStatement();
+
+           String sql = "UPDATE `users` "
+                   + "SET `first_name` = '" + user.getFirstName() + "', "
+                   + "`last_name` = '" + user.getLastName() + "', "
+                   + "`password`='" + user.getPassword() + "' "
+                   + "WHERE (`username` = '" + user.getUsername() + "')";
+           stmt.executeUpdate(sql);
+           return true;
+        }catch(SQLException se){
+
+           se.printStackTrace();
+        }catch(Exception e){
+           //Handle errors for Class.forName
+           e.printStackTrace();
+        }finally{
+           try{
+              if(stmt!=null)
+                 conn.close();
+           }catch(SQLException se){
+           }// do nothing
+           try{
+              if(conn!=null)
+                 conn.close();
+           }catch(SQLException se){
+              se.printStackTrace();
+           }//end finally try
+        }//end try
+        
+        return false;
    }
    
-   public static boolean deleteUser(String user) {
-       //TODO: Implement later
-       return false;
+   public static boolean deleteUser(String username) {
+ Connection conn = null;
+        Statement stmt = null;
+        try{
+           Class.forName("com.mysql.jdbc.Driver");
+
+           conn = DriverManager.getConnection(DB_URL, USER, PASS);
+           stmt = conn.createStatement();
+
+           String sql = "DELETE FROM `users` WHERE (`username` = '" + username + "')";
+           stmt.executeUpdate(sql);
+           return true;
+        }catch(SQLException se){
+
+           se.printStackTrace();
+        }catch(Exception e){
+           //Handle errors for Class.forName
+           e.printStackTrace();
+        }finally{
+           try{
+              if(stmt!=null)
+                 conn.close();
+           }catch(SQLException se){
+           }// do nothing
+           try{
+              if(conn!=null)
+                 conn.close();
+           }catch(SQLException se){
+              se.printStackTrace();
+           }//end finally try
+        }//end try
+        
+        return false;
    }
 }
